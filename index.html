@@ -52,7 +52,30 @@ main{max-width:none;margin:0;padding:20px 26px 70px}.hero{grid-template-columns:
 @media(max-width:1100px){.side-nav{width:220px}.app-main{margin-left:220px}.skill-grid{grid-template-columns:repeat(3,1fr)}.dashboard-grid{grid-template-columns:1fr}.dashboard-side{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.dashboard-side .dash-card{margin:0}.reading-grid,.resource-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.side-nav{transform:translateX(-100%);transition:.2s}.app-main{margin-left:0}.mobile-brand{display:flex;align-items:center;gap:8px;margin-right:auto}.topbar{justify-content:space-between;padding:0 14px}.search-box{width:42vw}.dashboard-welcome{margin:14px 12px 0;max-width:calc(100% - 24px);padding:20px}.welcome-note{display:none}.dashboard-grid{max-width:calc(100% - 24px);margin:14px 12px 40px}.skill-grid{grid-template-columns:1fr 1fr}.dashboard-side{display:block}.dashboard-side .dash-card{margin-bottom:12px}.reading-grid,.call-grid,.resource-grid,.network-row{grid-template-columns:1fr}main{padding:12px}.hero{grid-template-columns:1fr}.focus-card{align-items:flex-start;flex-wrap:wrap}.focus-card .primary{width:100%}.search-box{display:none}}
 </style>
-</head><body>
+<style id="tab-layout-overhaul">
+/* SpeakUp 120 — tabbed app layout */
+.legacy-header,#human-language-standard,body>main,#human-check{display:none!important}
+.app-shell{display:block!important}
+.app-main{margin-left:270px;min-height:100vh}
+body.tabbed-mode .dashboard-welcome,body.tabbed-mode .dashboard-grid{display:none}
+body.tabbed-mode .app-main{padding-bottom:40px}
+.tab-page{display:none!important;max-width:1200px;margin:0 auto;padding:30px 30px 70px}
+.tab-page.active-page{display:block!important}
+#lesson.tab-page{display:none!important}
+#lesson.tab-page.active-page{display:block!important}
+.page-hero{background:linear-gradient(135deg,#f7efff,#edf4ff 60%,#fff4f8);border:1px solid #e6e6f5;border-radius:22px;padding:28px;margin-bottom:20px;box-shadow:0 12px 35px rgba(58,68,130,.07)}
+.page-hero h1{font-size:30px;margin:5px 0 8px;color:#182c70}.page-hero p{color:#607096;max-width:760px;line-height:1.6;margin:0}
+.page-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:#6959df}
+.page-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.page-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.task-panel{background:#fff;border:1px solid #e4e7f2;border-radius:17px;padding:20px;box-shadow:0 8px 25px rgba(53,66,120,.05)}
+.task-panel h2,.task-panel h3{color:#1d326f}.task-panel h2{font-size:20px;margin:0 0 8px}.task-panel h3{font-size:16px;margin:0 0 7px}.task-panel p{color:#65728f;line-height:1.55}
+.task-panel textarea,.task-panel input[type=text],.task-panel input[type=date]{width:100%;box-sizing:border-box;border:1px solid #dfe3ef;border-radius:12px;padding:13px 14px;background:#fbfcff;min-height:105px;resize:vertical;outline:none}.task-panel textarea:focus,.task-panel input:focus{border-color:#7668e8;box-shadow:0 0 0 3px rgba(118,104,232,.10)}
+.action-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}.action-row button{border:1px solid #dfe3ef;background:#fff;border-radius:10px;padding:10px 14px;font-weight:750;cursor:pointer}.action-row .primary{background:#6757e8;color:#fff;border-color:#6757e8}
+.feedback-box{line-height:1.6}.feedback-box .feedback-score{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:#eef0ff;color:#4d48a0;font-weight:800;font-size:11px;margin-bottom:7px}.feedback-box .fb-good{color:#2d7651}.feedback-box .fb-watch{color:#8a5d16}.feedback-box .fb-better{background:#f6f3ff;border-left:3px solid #7565e8;padding:10px 12px;margin-top:9px;border-radius:8px}.human-pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#f0efff;color:#564ab0;font-size:11px;font-weight:800;margin:3px 3px 3px 0}
+.lesson-task{margin-bottom:18px}.lesson-task .task-title{display:flex;align-items:center;gap:10px}.lesson-task .task-icon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#eeeaff;color:#6454e5;font-weight:800}
+.subnav-note{background:#f8f9fd;border:1px solid #e7e9f2;padding:12px 14px;border-radius:12px;color:#5d6986;font-size:12px;margin-bottom:16px}
+@media(max-width:900px){.app-main{margin-left:0}.side-nav{width:220px}.page-grid,.page-grid.three{grid-template-columns:1fr}.tab-page{padding:22px 16px 50px}}
+</style></head><body>
 <div class="app-shell">
   <aside class="side-nav" id="sideNav">
     <div class="side-brand">
@@ -119,6 +142,24 @@ main{max-width:none;margin:0;padding:20px 26px 70px}.hero{grid-template-columns:
 
 
 
+
+<section id="pageHome" class="tab-page active-page"></section>
+<section id="pageLesson" class="tab-page"></section>
+<section id="pageVocab" class="tab-page"></section>
+<section id="pageSpeaking" class="tab-page"></section>
+<section id="pageWorkplace" class="tab-page"></section>
+<section id="pageClient" class="tab-page"></section>
+<section id="pageDifficult" class="tab-page"></section>
+<section id="pageWriting" class="tab-page"></section>
+<section id="pageNetworking" class="tab-page"></section>
+<section id="pageNegotiation" class="tab-page"></section>
+<section id="pageConfidence" class="tab-page"></section>
+<section id="pageProgress" class="tab-page"></section>
+<section id="pageNotes" class="tab-page"></section>
+<section id="pageReading" class="tab-page"></section>
+<section id="pageResources" class="tab-page"></section>
+<section id="pageData" class="tab-page"></section>
+<section id="pageCoach" class="tab-page"></section>
 <header class="legacy-header"><div class="brand">SpeakUp <span>120</span></div><div class="nav">
 <button data-go="#today">Today</button><button data-go="#coach">Coach</button><button data-go="#progress">Progress</button><button data-go="#negotiation">Negotiation</button><button data-go="#calendarSec">120 Days</button><button data-go="#notesSec">Notes</button></div></header>
 <section id="human-language-standard" class="human-standard hidden-top-standard">
@@ -367,6 +408,93 @@ document.addEventListener("DOMContentLoaded",()=>{
    }catch(e){}
  };
  setTimeout(updateDashboard,300);
+})();
+</script>
+
+<script id="tabbed-app-controller">
+(function(){
+  const $=s=>document.querySelector(s);
+  const $$=s=>[...document.querySelectorAll(s)];
+  const pages={today:'pageHome',lesson:'pageLesson',vocab:'pageVocab',speaking:'pageSpeaking',workplace:'pageWorkplace',client:'pageClient',difficult:'pageDifficult',writing:'pageWriting',networking:'pageNetworking',negotiation:'pageNegotiation',confidence:'pageConfidence',progress:'pageProgress',notesSec:'pageNotes',reading:'pageReading',resources:'pageResources',dataSec:'pageData',coach:'pageCoach'};
+  let active='today';
+  function feedbackHTML(text, kind){
+    const raw=(text||'').trim();
+    if(!raw) return '<strong>Start with your own words.</strong><br>Write 1–4 sentences first. Then press <b>Get feedback</b>.';
+    const words=raw.split(/\s+/).filter(Boolean), low=raw.toLowerCase();
+    let score=8, good=[], watch=[], better=raw;
+    if(words.length>60){score--;watch.push('It is longer than it needs to be. Try removing one sentence or repeating idea.');}
+    if(words.length<4){score--;watch.push('The idea is too short to judge fully. Add the actual point or next step.');}
+    const soft=/\b(just|maybe|perhaps|i think|i was wondering|if you could|would you mind|kindly|at your earliest convenience|a little bit)\b/gi;
+    const fillers=/\b(very|really|basically|actually|literally|in order to|sort of|kind of)\b/gi;
+    const m=raw.match(soft)||[], f=raw.match(fillers)||[];
+    if(m.length){score--;watch.push('There are softeners that may make you sound less confident. Keep the warmth, but say the request more directly.');}
+    if(f.length){score--;watch.push('A few filler/formal phrases can be removed to make this sound more natural.');}
+    if(/\b(i need|send me|you must|you should|obviously|as i already said)\b/i.test(raw)){watch.push('Check the tone: this could sound sharper than you intend. Add context or a collaborative phrase if needed.');score--;}
+    if(/[.!?]$/.test(raw)) good.push('Clean ending.'); else watch.push('Give the sentence a clear ending.');
+    if(/\b(please|thanks|thank you|appreciate|understand|happy to|no problem|sorry)\b/i.test(raw)) good.push('There is a natural courtesy marker.');
+    else if(kind==='client'||kind==='workplace') watch.push('If the situation calls for it, add one small courtesy marker so the message stays warm.');
+    if(!watch.length) good.push('No obvious robotic or overly formal habits detected.');
+    const natural = raw.replace(soft,'').replace(fillers,'').replace(/\s{2,}/g,' ').trim();
+    if(natural && natural!==raw) better=natural;
+    const rating=Math.max(5,Math.min(10,score));
+    return '<div class="feedback-score">Human-naturalness: '+rating+'/10</div>'+
+      (good.length?'<div class="fb-good">✓ '+good.join(' ✓ ')+'</div>':'')+
+      (watch.length?'<div class="fb-watch">⚠ '+watch.join('<br>⚠ ')+'</div>':'')+
+      '<div class="fb-better"><b>Try saying it more naturally:</b><br>'+esc(better)+'</div>'+ 
+      '<div style="margin-top:8px"><span class="human-pill">clear</span><span class="human-pill">human</span><span class="human-pill">appropriate</span><span class="human-pill">confident</span></div>';
+  }
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  window.tabFeedback=function(inputId,outId,kind){const i=$('#'+inputId),o=$('#'+outId);if(i&&o)o.innerHTML=feedbackHTML(i.value,kind);};
+  function pageHeader(kicker,title,desc){return '<div class="page-hero"><div class="page-kicker">'+kicker+'</div><h1>'+title+'</h1><p>'+desc+'</p></div>';}
+  function copyTask(id, title, icon, sourceSelector){const src=$(sourceSelector); if(!src)return '<div class="task-panel"><h2>'+title+'</h2><p>Content is loading…</p></div>'; return '<div class="task-panel">'+src.innerHTML+'</div>';}
+  function renderPages(){
+    const d=typeof current==='function'?current():{day:1,title:'Day 1: Practice'};
+    $('#pageHome').innerHTML=pageHeader('YOUR COMMUNICATION COACH','Good morning! ✨','Your daily communication practice is organized one task at a time. Choose a section from the sidebar, complete the exercise, submit your answer and get human-focused feedback.')+
+      '<div class="page-grid three">'+
+      '<div class="task-panel"><h3>Today</h3><p><b>Day '+d.day+' of 120</b><br>'+esc(d.title)+'</p><div class="action-row"><button class="primary" onclick="openTab(\'lesson\')">Start today’s lesson →</button></div></div>'+ 
+      '<div class="task-panel"><h3>Human standard</h3><p>We are training you to sound natural, clear and confident — not robotic or overly formal.</p><span class="human-pill">Correct ≠ natural</span><span class="human-pill">Fancy ≠ professional</span></div>'+ 
+      '<div class="task-panel"><h3>Feedback standard</h3><p>Every submission is checked for clarity, naturalness, tone, confidence, conciseness and whether a real person would actually say it.</p></div></div>'+
+      '<div class="section-title compact" style="margin-top:22px"><div><span>✦</span><h2>Skill Tracks</h2></div></div><div class="skill-grid">'+
+      [['speaking','◯','Speaking & Recording','Fluency, pronunciation and confidence.'],['workplace','▣','Workplace Communication','Emails, meetings and collaboration.'],['client','♧','Client Calls','Warm, calm, professional conversations.'],['negotiation','◇','Negotiation Mastery','Persuasion without sounding scripted.'],['confidence','✧','Confidence & Mindset','Calm, clarity and presence.']].map(x=>'<button data-go="'+x[0]+'"><b>'+x[1]+'</b><strong>'+x[2]+'</strong><small>'+x[3]+'</small><em>Open →</em></button>').join('')+'</div>';
+    $('#pageLesson').innerHTML=pageHeader('DAY '+d.day,'Today’s practice','One focused lesson. You can move between the individual tasks from the sidebar without seeing the entire course on one page.')+
+      '<div class="subnav-note">Today’s focus: <b>'+esc(d.focus||'natural professional communication')+'</b> · Complete the task, submit your response, then review the feedback before moving on.</div>'+
+      '<div class="page-grid">'+
+      '<div class="task-panel"><div class="task-title"><div class="task-icon">◉</div><div><h2>Speaking</h2><p>'+esc(d.speaking)+'</p></div></div><textarea id="lessonSpeaking" placeholder="Type what you would say before recording…"></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'lessonSpeaking\',\'lessonSpeakingFb\',\'speaking\')">Get feedback</button><button onclick="openTab(\'speaking\')">Open Speaking Lab</button></div><div class="feedback-box" id="lessonSpeakingFb">Submit your answer for human-language feedback.</div></div>'+ 
+      '<div class="task-panel"><h2>Workplace situation</h2><p>'+esc(d.scenario)+'</p><textarea id="lessonScenario" placeholder="What would you actually say?"></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'lessonScenario\',\'lessonScenarioFb\',\'workplace\')">Get feedback</button><button onclick="openTab(\'workplace\')">Open Workplace</button></div><div class="feedback-box" id="lessonScenarioFb">Your feedback will appear here.</div></div>'+ 
+      '<div class="task-panel"><h2>Writing</h2><p>'+esc(d.writing)+'</p><textarea id="lessonWriting" placeholder="Write your natural version…"></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'lessonWriting\',\'lessonWritingFb\',\'writing\')">Get feedback</button><button onclick="openTab(\'writing\')">Open Writing Lab</button></div><div class="feedback-box" id="lessonWritingFb">Your feedback will appear here.</div></div>'+ 
+      '<div class="task-panel"><h2>Vocabulary</h2><p>Use these words naturally. Do not force them into a sentence just to sound advanced.</p><div class="vocabGrid">'+(d.vocabulary||[]).map(v=>'<div class="card"><b>'+esc(v.word)+'</b><p>'+esc(v.task)+'</p><input placeholder="Your original sentence" id="lv_'+esc(v.word).replace(/[^a-z0-9]/gi,'')+'"></div>').join('')+'</div><div class="action-row"><button class="primary" onclick="openTab(\'vocab\')">Open Vocabulary Lab</button></div></div>'+ 
+      '</div><div class="action-row" style="margin-top:18px"><button onclick="scoreToday()">Save self-score</button><button class="primary" onclick="markComplete()">Complete Day '+d.day+' ✓</button></div>';
+    $('#pageVocab').innerHTML=pageHeader('VOCABULARY','Use better words — naturally','The goal is not to sound sophisticated. The goal is to choose the right word and use it comfortably in real conversation.')+'<div class="page-grid three">'+(d.vocabulary||[]).concat([{word:'concise',task:'Use it in a sentence about your work.'},{word:'clarify',task:'Use it in a sentence you might say to a coworker.'},{word:'proactive',task:'Explain it in your own words, then use it naturally.'}]).map((v,i)=>'<div class="task-panel"><h3>'+esc(v.word)+'</h3><p>'+esc(v.task)+'</p><input id="v_'+i+'" type="text" placeholder="Your original sentence"><div class="action-row"><button class="primary" onclick="tabFeedback(\'v_'+i+'\',\'vf_'+i+'\',\'vocab\')">Get feedback</button></div><div class="feedback-box" id="vf_'+i+'">Submit your sentence for feedback.</div></div>').join('')+'</div>';
+    $('#pageSpeaking').innerHTML=pageHeader('SPEAKING & RECORDING','Speak first. Polish second.','Practice your actual speaking voice. Record, listen back, then use feedback to improve naturalness, pace, clarity and confidence.')+'<div class="page-grid"><div class="task-panel"><h2>🎙 Speaking Lab</h2><p>'+esc(d.speaking)+'</p><div class="rec"><button id="recBtn">Start recording</button><span id="recStatus">Microphone permission may be required.</span></div><textarea id="speakingAnswer" placeholder="After recording, type what you said or the version you want to practise…"></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'speakingAnswer\',\'speakingAnswerFb\',\'speaking\')">Get feedback</button></div><div class="feedback-box" id="speakingAnswerFb">Feedback will appear after submission.</div></div><div class="task-panel"><h2>Human delivery checklist</h2><p>Listen once without judging yourself. Then ask:</p><div class="feedback-principles"><span>Did I sound like myself?</span><span>Did I rush?</span><span>Did I over-explain?</span><span>Was my ending confident?</span><span>Would I say it this way at work?</span></div></div></div>';
+    $('#pageWorkplace').innerHTML=pageHeader('WORKPLACE COMMUNICATION','Real workplace conversations','Emails, quick questions, updates, meetings and unexpected requests. Practise the way you would actually speak at work.')+'<div class="task-panel"><h2>Today’s workplace simulation</h2><p>'+esc(d.scenario)+'</p><textarea id="workAnswer" placeholder="Write exactly what you would say to the person."></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'workAnswer\',\'workFb\',\'workplace\')">Submit & get feedback</button><button onclick="saveSim()">Save response</button></div><div class="feedback-box" id="workFb">Your human-language feedback will appear here.</div></div>';
+    $('#pageClient').innerHTML=pageHeader('CLIENT CALLS','Sound calm, warm and capable','Client communication should feel human. Do not sound scripted, defensive or overly formal.')+'<div class="page-grid"><div class="task-panel"><h3>Scenario 01 — Delay</h3><p>A client is frustrated about a delay. Acknowledge the concern, explain what you know and give the next step.</p><textarea id="clientA" placeholder="What would you say on the call?"></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'clientA\',\'clientAFb\',\'client\')">Submit & get feedback</button></div><div class="feedback-box" id="clientAFb">Feedback will appear here.</div></div><div class="task-panel"><h3>Scenario 02 — You don’t know</h3><p>The client asks something you do not know. Do not guess. Keep them reassured and explain what you will do next.</p><textarea id="clientB" placeholder="What would you say?"></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'clientB\',\'clientBFb\',\'client\')">Submit & get feedback</button></div><div class="feedback-box" id="clientBFb">Feedback will appear here.</div></div></div>';
+    $('#pageDifficult').innerHTML=pageHeader('DIFFICULT SITUATIONS','Stay calm when the conversation changes','The goal is not to have the perfect sentence. The goal is to think, respond and stay professional under pressure.')+'<div class="task-panel"><h2>Push-back simulation</h2><p>'+esc(d.scenario)+' <b>Twist:</b> the other person pushes back on your first answer.</p><textarea id="difficultAnswer" placeholder="Your second response — calm, direct and human."></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'difficultAnswer\',\'difficultFb\',\'difficult\')">Submit & get feedback</button></div><div class="feedback-box" id="difficultFb">Feedback will appear here.</div></div>';
+    $('#pageWriting').innerHTML=pageHeader('WRITING & PROOFREADING','Write like a professional person, not a template','Learn to remove filler, unnecessary formality and vague wording while keeping the right tone.')+'<div class="task-panel"><h2>Today’s rewrite</h2><p>'+esc(d.writing)+'</p><textarea id="writingAnswer" placeholder="Write your improved version."></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'writingAnswer\',\'writingFb\',\'writing\')">Submit & get feedback</button></div><div class="feedback-box" id="writingFb">Feedback will appear here.</div></div><div class="task-panel" style="margin-top:18px"><h3>Human proofreading checklist</h3><p>Read it once as the recipient. Remove anything you would never actually say. Keep the important legal/professional details.</p></div>';
+    $('#pageNetworking').innerHTML=pageHeader('NETWORKING','Build professional relationships naturally','No memorized networking script. Practise genuine questions, follow-ups and clean exits.')+'<div class="page-grid three"><div class="task-panel"><h3>Start</h3><p>“How did you get into this area of law?”</p></div><div class="task-panel"><h3>Continue</h3><p>“That’s interesting. What do you enjoy most about it?”</p></div><div class="task-panel"><h3>End</h3><p>“It was great speaking with you. I’ll keep in touch.”</p></div></div><div class="task-panel" style="margin-top:18px"><h2>Your version</h2><textarea id="networkAnswer" placeholder="Write how you would actually say it."></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'networkAnswer\',\'networkFb\',\'networking\')">Submit & get feedback</button></div><div class="feedback-box" id="networkFb">Feedback will appear here.</div></div>';
+    const neg=$('#negotiation'); $('#pageNegotiation').innerHTML=pageHeader('NEGOTIATION MASTERY','Negotiate without sounding scripted','Study Ury, Voss and Carter, then apply one technique in your own words.')+(neg?neg.innerHTML:'')+'<div class="task-panel" style="margin-top:18px"><h2>Submit a negotiation response</h2><textarea id="negAnswer" placeholder="Write your response to a negotiation scenario."></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'negAnswer\',\'negFb\',\'negotiation\')">Submit & get feedback</button></div><div class="feedback-box" id="negFb">Feedback will appear here.</div></div>';
+    $('#pageConfidence').innerHTML=pageHeader('CONFIDENCE & MINDSET','Confidence is a communication skill','Build calm delivery, assertiveness, self-trust and the ability to recover when you lose your words.')+'<div class="page-grid"><div class="task-panel"><h2>Today’s reflection</h2><p>'+esc(d.reflection)+'</p><textarea id="confidenceAnswer" placeholder="Write one honest sentence."></textarea><div class="action-row"><button class="primary" onclick="tabFeedback(\'confidenceAnswer\',\'confidenceFb\',\'confidence\')">Get feedback</button></div><div class="feedback-box" id="confidenceFb">Feedback will appear here.</div></div><div class="task-panel"><h2>Reset before speaking</h2><p>Pause. Breathe. Decide the one point you need to make. Then say it simply.</p><div class="feedback-principles"><span>Pause</span><span>One point</span><span>Simple words</span><span>Clean ending</span></div></div></div>';
+    const prog=$('#progress'); $('#pageProgress').innerHTML=pageHeader('MEASUREMENT','Your improvement','Track completed days, self-scores and recurring weaknesses. Improvement means becoming clearer and more natural over time.')+(prog?prog.innerHTML:'');
+    const notes=$('#notesSec'); $('#pageNotes').innerHTML=pageHeader('NOTES & JOURNAL','Your communication notebook','Save phrases, corrections, lessons and real situations you want to revisit.')+(notes?notes.innerHTML:'');
+    const reading=$('#reading'); $('#pageReading').innerHTML=pageHeader('READING PRACTICE','Read from great novels. Learn human voice.','Use public-domain novels to study rhythm, tone, dialogue, indirect language and how writers make ideas feel human.')+(reading?reading.innerHTML:'');
+    const res=$('#resources'); $('#pageResources').innerHTML=pageHeader('STUDY RESOURCES','Learn from experts, then make it your own','Watch, listen, read and immediately explain the idea in your own words.')+(res?res.innerHTML:'');
+    const data=$('#dataSec'); $('#pageData').innerHTML=pageHeader('SETTINGS & DATA','Protect your progress','Your current standalone site stores progress in this browser. Export a backup before changing devices.')+(data?data.innerHTML:'');
+    const coach=$('#coach'); $('#pageCoach').innerHTML=pageHeader('INSTANT COACH','Say it better','Paste something you actually said or want to say. The coach helps remove robotic, overly formal and hesitant wording.')+(coach?coach.innerHTML:'');
+  }
+  window.openTab=function(key){
+    active=key||'today'; document.body.classList.add('tabbed-mode');
+    $$('.tab-page').forEach(p=>p.classList.remove('active-page'));
+    const id=pages[active]||pages.today; const p=$('#'+id); if(p)p.classList.add('active-page');
+    $$('.side-link').forEach(b=>b.classList.toggle('active',b.dataset.go===active));
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(active==='speaking')setTimeout(setupRecorder,50);
+  };
+  function bind(){
+    renderPages();
+    $$('.side-link[data-go]').forEach(b=>{b.onclick=(e)=>{e.preventDefault();openTab(b.dataset.go)}});
+    $$('.app-main [data-go]').forEach(b=>{b.onclick=(e)=>{e.preventDefault();openTab(b.dataset.go)}});
+    document.body.classList.add('tabbed-mode');openTab('today');
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(bind,50));else setTimeout(bind,50);
 })();
 </script>
 </body></html>
